@@ -28,5 +28,5 @@ func _process(delta):
 		victory()
 
 func victory():
-	state.win = true
-	get_tree().change_scene("res://scenes/Aftergame.tscn")
+	State.win = true
+	State.change_scene("res://scenes/Aftergame.tscn")

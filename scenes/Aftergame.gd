@@ -40,7 +40,7 @@ var CITAS = ["La guerra es la continuación de la política por otros medios. Ge
 "Los hombres viejos declaran las guerras, pero son los jóvenes las que las luchas y los que mueren. Herbert Hoover",
 "La guerra es deliciosa para aquellos que no la han experimentado. Erasmo de Rotterdam",
 "La guerra no determina quien tiene razón, sólo quien queda. Bertrand Russell",
-"Aquel que tiene mil amigos, no le sobra ni uno. Aquel que tiene un enemigo, lo encontrará en todas partes. Ali ibn-Abi- Talib",
+"Aquel que tiene mil amigos, no le sobra ni uno. Aquel que tiene un enemigo, lo encontrará en todas partes. Ali ibn-Abi-Talib",
 "Solo los muertos ven el fin de la guerra. Platon",
 "Mientras haya hombres habrá guerras. Albert Einstein",
 "Todas las guerras son guerras civiles, porque todos los hombres son iguales. Francois Fenelon",
@@ -68,16 +68,20 @@ var RECETA = "Ingredientes: Medio kilo de brócoli verde, 1 patata, 3 dientes
 func _ready():
 	set_process_input(true)
 	var texto
-	if(state.win):
+	var result
+	if(State.win):
+		result = "SUCCESS!"
 		texto = RECETA
 	else:
 		randomize()
 		var index = (randi() % CITAS.size())
+		result = "FAILURE!"
 		texto = CITAS[index]
+	get_node("Result").set_text(result)
 	get_node("Quote").set_text(texto)
 
 func _input(event):
 	if(event.is_action_pressed("reload")):
-		get_tree().change_scene("res://scenes/Game.tscn")
+		State.change_scene("res://scenes/InGame.tscn")
 	elif(event.is_action_pressed("exit")):
 		get_tree().quit()

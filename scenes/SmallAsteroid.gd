@@ -28,5 +28,5 @@ func _process(delta):
 				
 
 func hurt():
-	state.add_score_point()
+	State.add_score_point()
 	queue_free()

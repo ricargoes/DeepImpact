@@ -61,5 +61,5 @@ func new_speed(modulus,angle):
 	return Vector2(modulus*cos(angle),-modulus*sin(angle))
 	
 func hurt():
-	state.win = false
-	get_tree().change_scene("res://scenes/Aftergame.tscn")
+	State.win = false
+	State.change_scene("res://scenes/Aftergame.tscn")

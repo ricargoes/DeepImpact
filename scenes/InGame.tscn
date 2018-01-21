@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=1]
+
+[ext_resource path="res://scenes/InGame.gd" type="Script" id=1]
+[ext_resource path="res://scenes/Background.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/Ship.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/BigAsteroid.tscn" type="PackedScene" id=4]
+
+[node name="InGame" type="Node"]
+
+script/script = ExtResource( 1 )
+
+[node name="Background" parent="." instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 931, 515 )
+
+[node name="Ship" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 960, 540 )
+
+[node name="BigAsteroid" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 779, 459 )
+
+[node name="BigAsteroid 2" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 1511.95, 292.398 )
+
+
