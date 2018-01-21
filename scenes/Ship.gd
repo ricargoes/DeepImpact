@@ -2,6 +2,8 @@ extends Node2D
 
 export var speed = Vector2(1,1)
 
+const TICK = 1.0/60
+
 const _ACCELERATION = 10
 
 const _MAX_SPEED = 300
@@ -12,6 +14,7 @@ const _UI_UP = "ui_up"
 const _UI_DOWN = "ui_down"  
 const _UI_RIGHT = "ui_right"
 const _UI_LEFT = "ui_left"
+const _UI_FIRE = "ui_fire"
 
 func _ready():
 	set_process(true)
@@ -37,6 +40,17 @@ func _process(delta):
 		speed = Vector2(-_MAX_SPEED,speed.y)
 	if(speed.y < -_MAX_SPEED):
 		speed = Vector2(speed.x,-_MAX_SPEED)
+
+func _input(event):
+	if(event.is_action_pressed(_UI_FIRE)):
+		var laser_package = load("res://scenes/Laser.tscn")
+		var laser = laser_package.instance()
+		get_parent().add_child(laser)
+		laser.set_pos(get_pos()+speed*TICK)
+		laser.set_rot(get_rot())
+		laser.update_speed()
+		laser.advance(2*TICK)
+		
 
 func new_speed(modulus,angle):	
 	return Vector2(modulus*cos(angle),-modulus*sin(angle))
