@@ -4,11 +4,11 @@ const MAX_SPEED = 400
 const MAX_ANGULAR_SPEED = 2*PI
 var speed
 var angular_speed
-var count_down = 1
 const MAX_ASTEROID_DIVISION = 2
 
 func _ready():
 	add_to_group("actors")
+	add_to_group("asteroids")
 	randomize()
 	var angle = rand_range(0, 2*PI)
 	var speed_module = rand_range(0, MAX_SPEED)
@@ -20,7 +20,12 @@ func _ready():
 func _process(delta):
 	self.set_pos(self.get_pos()+delta*speed)
 	self.set_rot(self.get_rot()+delta*angular_speed)
-	count_down-=delta
+	
+	if (get_overlapping_areas().size() > 0):
+		for area in get_overlapping_areas():
+			var thing = area.get_parent()
+			if(thing.is_in_group("ships") and thing.has_method("hurt")):
+				thing.hurt()
 	
 
 func hurt():

@@ -56,3 +56,6 @@ func _input(event):
 
 func new_speed(modulus,angle):	
 	return Vector2(modulus*cos(angle),-modulus*sin(angle))
+	
+func hurt():
+	queue_free()
