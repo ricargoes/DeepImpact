@@ -25,4 +25,14 @@ transform/pos = Vector2( 779, 459 )
 
 transform/pos = Vector2( 1511.95, 292.398 )
 
+[node name="BigAsteroid 3" parent="." instance=ExtResource( 4 )]
+
+[node name="BigAsteroid 4" parent="." instance=ExtResource( 4 )]
+
+[node name="BigAsteroid 5" parent="." instance=ExtResource( 4 )]
+
+[node name="BigAsteroid 6" parent="." instance=ExtResource( 4 )]
+
+[node name="BigAsteroid 7" parent="." instance=ExtResource( 4 )]
+
 
