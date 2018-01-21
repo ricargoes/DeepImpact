@@ -3,7 +3,7 @@ extends Node2D
 const _SPEED_MODULUS = 800
 
 var speed = Vector2(0,0)
-var countdown = 2.0
+var countdown = 0.5
 
 func _ready():
 	set_process(true)
