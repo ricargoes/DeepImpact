@@ -4,7 +4,6 @@ const MAX_SPEED = 400
 const MAX_ANGULAR_SPEED = 2*PI
 var speed
 var angular_speed
-var count_down = 1
 const MAX_ASTEROID_DIVISION = 2
 
 func _ready():
@@ -20,7 +19,6 @@ func _ready():
 func _process(delta):
 	self.set_pos(self.get_pos()+delta*speed)
 	self.set_rot(self.get_rot()+delta*angular_speed)
-	count_down-=delta
 	
 
 func hurt():
