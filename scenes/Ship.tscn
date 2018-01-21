@@ -1,17 +1,21 @@
-[gd_scene load_steps=3 format=1]
+[gd_scene load_steps=4 format=1]
 
-[ext_resource path="res://resources/images/ship.png" type="Texture" id=1]
+[ext_resource path="res://scenes/Ship.gd" type="Script" id=1]
+[ext_resource path="res://resources/images/ship.png" type="Texture" id=2]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 0, -10, 8.66025, 5, -8.66025, 5 )
 
-[node name="Ship" type="Node"]
+[node name="Ship" type="Node2D"]
+
+script/script = ExtResource( 1 )
+speed = Vector2( 0, 0 )
 
 [node name="Sprite" type="Sprite" parent="."]
 
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 
 [node name="Area2D" type="Area2D" parent="."]
 
