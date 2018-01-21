@@ -5,10 +5,10 @@ const MAX_ANGULAR_SPEED = 2*PI
 var speed
 var angular_speed
 var count_down = 1
-const MAX_ASTEROID_DIVISION = 2
+const MAX_ASTEROID_DIVISION = 100
 
 func _ready():
-	add_to_group("asteroids")
+	add_to_group("actors")
 	randomize()
 	var angle = rand_range(0, 2*PI)
 	var speed_module = rand_range(0, MAX_SPEED)

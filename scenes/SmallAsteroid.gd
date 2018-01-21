@@ -6,7 +6,7 @@ var speed
 var angular_speed
 
 func _ready():
-	add_to_group("asteroids")
+	add_to_group("actors")
 	randomize()
 	var angle = rand_range(0, 2*PI)
 	var speed_module = rand_range(0, MAX_SPEED)
