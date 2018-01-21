@@ -10,8 +10,7 @@ var CITAS = ["La guerra es la continuación de la política por otros medios. Ge
 "El valor y la perseverancia tienen un talismán mágico, ante el que las dificultades desaparecen y los obstáculos se desvanecen en el aire. John Quincy Adams",
 "El valor significa estar muerto de miedo, pero actuar igualmente. John Wayne",
 "Sobre todo, jamás os asustéis. El enemigo que os obliga a retiraros también está asustado de vosotros en ese preciso momento. André Maurois",
-"Una única cosa le he pedido a Dios, una nimiedad: Oh, Señor, haz ridículos a mis enemigos.",
-"Y Dios me la concedió. Voltaire",
+"Una única cosa le he pedido a Dios, una nimiedad: Oh, Señor, haz ridículos a mis enemigos. Y Dios me la concedió. Voltaire",
 "Conquista el que resiste. Persio",
 "Mejor morir de pie que vivir de rodillas. Emiliano Zapata",
 "Aquellos que disfrutan mucho tiempo de privilegios como los que disfrutamos nosotros, acaban olvidando con el tiempo que para ganarlos tuvieron que morir hombres. Franklin D. Roosevelt",
@@ -73,6 +72,6 @@ func _ready():
 
 func _input(event):
 	if(event.is_action_pressed("reload")):
-		get_tree().reload_current_scene()
+		get_tree().change_scene("res://scenes/Game.tscn")
 	elif(event.is_action_pressed("exit")):
 		get_tree().quit()
