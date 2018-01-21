@@ -19,6 +19,8 @@ const _UI_FIRE = "ui_fire"
 func _ready():
 	set_process(true)
 	set_process_input(true)
+	add_to_group("actors")
+	add_to_group("ships")
 
 func _process(delta):
 	set_pos( get_pos() + speed*delta )
