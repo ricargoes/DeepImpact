@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://scenes/Game.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Ship.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/BigAsteroid.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/SmallAsteroid.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/Background.tscn" type="PackedScene" id=5]
 
 [node name="Game" type="Node"]
 
@@ -20,5 +21,9 @@ transform/pos = Vector2( 779, 459 )
 [node name="SmallAsteroid" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 801.744, 149.24 )
+
+[node name="Background" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 931, 515 )
 
 
