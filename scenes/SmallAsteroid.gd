@@ -20,4 +20,5 @@ func _process(delta):
 	self.set_rot(self.get_rot()+delta*angular_speed)
 
 func hurt():
+	state.add_score_point()
 	queue_free()

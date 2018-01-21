@@ -5,7 +5,7 @@ const MAX_ANGULAR_SPEED = 2*PI
 var speed
 var angular_speed
 var count_down = 1
-const MAX_ASTEROID_DIVISION = 100
+const MAX_ASTEROID_DIVISION = 2
 
 func _ready():
 	add_to_group("actors")
@@ -21,11 +21,10 @@ func _process(delta):
 	self.set_pos(self.get_pos()+delta*speed)
 	self.set_rot(self.get_rot()+delta*angular_speed)
 	count_down-=delta
-	if (count_down <= 0):
-		self.hurt()
 	
 
 func hurt():
+	state.add_score_point()
 	var small_asteroid_maker = load("res://scenes/SmallAsteroid.tscn")
 	for small_asteroid in range(0,MAX_ASTEROID_DIVISION):
 		var sa1 = small_asteroid_maker.instance()
