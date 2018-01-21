@@ -4,7 +4,7 @@ export var speed = Vector2(1,1)
 
 const _ACCELERATION = 10
 
-const _MAX_SPEED = 500
+const _MAX_SPEED = 300
 const _DELTA_SPEED = 0.97
 const _DELTA_ROT = 1.0/60*2*PI
 
