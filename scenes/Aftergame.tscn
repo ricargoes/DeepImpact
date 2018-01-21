@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=1]
+[gd_scene load_steps=3 format=1]
 
 [ext_resource path="res://scenes/Aftergame.gd" type="Script" id=1]
+[ext_resource path="res://scenes/Music.tscn" type="PackedScene" id=2]
 
 [node name="Aftergame" type="Node"]
 
@@ -38,5 +39,7 @@ align = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+
+[node name="Music" parent="." instance=ExtResource( 2 )]
 
 
