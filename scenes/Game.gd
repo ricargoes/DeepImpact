@@ -24,3 +24,9 @@ func _process(delta):
 
 			if (new_pos != pos):
 				actor.set_pos(new_pos)
+	if(get_tree().get_nodes_in_group("asteroids").size()==0):
+		victory()
+
+func victory():
+	state.win = true
+	get_tree().change_scene("res://scenes/Aftergame.tscn")

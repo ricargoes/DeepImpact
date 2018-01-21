@@ -15,6 +15,7 @@ const _UI_DOWN = "ui_down"
 const _UI_RIGHT = "ui_right"
 const _UI_LEFT = "ui_left"
 const _UI_FIRE = "ui_fire"
+const _EXIT = "exit"
 
 func _ready():
 	set_process(true)
@@ -52,10 +53,13 @@ func _input(event):
 		laser.set_rot(get_rot())
 		laser.update_speed()
 		laser.advance(2*TICK)
-		
+
+	if(Input.is_action_pressed(_EXIT)):
+		get_tree().quit()
 
 func new_speed(modulus,angle):	
 	return Vector2(modulus*cos(angle),-modulus*sin(angle))
 	
 func hurt():
-	queue_free()
+	state.win = false
+	get_tree().change_scene("res://scenes/Aftergame.tscn")

@@ -63,12 +63,18 @@ var CITAS = ["La guerra es la continuación de la política por otros medios. Ge
 "La papa cultivada fue vista por primera vez por los españoles en el valle de la Grita, en la provincia de Vélez (Colombia) en 1537. Así fue relatado por el conquistador, cronista e historiador español Pedro Cieza de León en su obra Crónica del Perú publicada en Sevilla en 1553, quien además añadió que él mismo la vio en Quito (Ecuador), así como en Popayán y  Pasto (Colombia). Enciclopedia Galáctica",
 "El brócoli tiene un alto contenido en vitamina C y fibra alimentaria; también contiene múltiples nutrientes con potentes propiedades anti-cancerígenas, como diindolilmetano y  pequeñas cantidades de selenio.1​ Una sola ración proporciona más de 30 mg de vitamina C y media-taza proporciona 52 mg. Enciclopedia Galáctica"]
 
+var RECETA = "Ingredientes: Medio kilo de brócoli verde, 1 patata, 3 dientes de ajo, 1 cucharadita de pimentón dulce, 1 cucharadita de vinagre de vino blanco, Aceite de oliva virgen extra, Sal, Elaboracion, Limpiamos el brócoli y lo separamos en arbolitos. Pelamos la patata, la lavamos y la troceamos gruesa. Cocemos la patata con el brócoli al vapor o en muy poca agua con sal con la cazuela tapada. 7 minutos. La verdura debe quedar tierna pero entera. La escurrimos muy bien sobre un colador ara que suelte toda el agua. Mientras tanto pelamos los ajos y los fileteamos. Los doramos al fuego en aceite de oliva. Cuando empiecen a tomar color añadimos el pimentón, removemos un momento para que ligue bien con el aceite y retiramos del fuego. Ya fuera del fuego añadimos el vinagre y la sal. Regamos la verdura caliente con este adobo y servimos al momento."
+
 func _ready():
 	set_process_input(true)
-	randomize()
-	var index = (randi() % CITAS.size())
-	var cita_actual = CITAS[index]
-	get_node("Quote").set_text(cita_actual)
+	var texto
+	if(state.win):
+		texto = RECETA
+	else:
+		randomize()
+		var index = (randi() % CITAS.size())
+		texto = CITAS[index]
+	get_node("Quote").set_text(texto)
 
 func _input(event):
 	if(event.is_action_pressed("reload")):
