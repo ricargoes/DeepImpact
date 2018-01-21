@@ -22,7 +22,7 @@ func _process(delta):
 	
 	if (get_overlapping_areas().size() > 0):
 		for area in get_overlapping_areas():
-			var thing = get_parent()
+			var thing = area.get_parent()
 			if(thing.is_in_group("ships") and thing.has_method("hurt")):
 				thing.hurt()
 				
