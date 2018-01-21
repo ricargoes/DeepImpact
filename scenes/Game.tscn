@@ -11,6 +11,11 @@ transform/pos = Vector2( 960, 540 )
 
 [node name="BigAsteroid" parent="." instance=ExtResource( 2 )]
 
+<<<<<<< Updated upstream
 transform/pos = Vector2( 398.9, 295.688 )
+=======
+transform/pos = Vector2( 960, 540 )
+speed = Vector2( 1, 1 )
+>>>>>>> Stashed changes
 
 

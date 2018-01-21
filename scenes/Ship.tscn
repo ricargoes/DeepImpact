@@ -11,7 +11,7 @@ points = Vector2Array( 0, -10, 8.66025, 5, -8.66025, 5 )
 [node name="Ship" type="Node2D"]
 
 script/script = ExtResource( 1 )
-speed = Vector2( 0, 0 )
+speed = Vector2( 1, 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 
