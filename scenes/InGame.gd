@@ -1,8 +1,12 @@
 extends Node
 
-
 func _ready():
 	set_process(true)
+	var n_asteroids = 2*State.level
+	var asteroid_scene = load("res://scenes/BigAsteroid.tscn")
+	for i in range(0,n_asteroids):
+		var asteroid = asteroid_scene.instance()
+		add_child(asteroid)
 
 func _process(delta):
 	var actors = get_tree().get_nodes_in_group("actors")

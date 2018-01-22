@@ -2,13 +2,14 @@ extends Area2D
 
 const MAX_SPEED = 400
 const MAX_ANGULAR_SPEED = 2*PI
-const MAX_ASTEROID_DIVISION = 5
+var asteroid_division
 var speed
 var angular_speed
 
 func _ready():
 	add_to_group("actors")
 	add_to_group("asteroids")
+	asteroid_division = State.level*2
 	randomize()
 	var angle = rand_range(0, 2*PI)
 	var speed_module = rand_range(0, MAX_SPEED)
@@ -31,7 +32,7 @@ func _process(delta):
 func hurt():
 	State.add_score_point()
 	var small_asteroid_maker = load("res://scenes/SmallAsteroid.tscn")
-	for small_asteroid in range(0,MAX_ASTEROID_DIVISION):
+	for small_asteroid in range(0,asteroid_division):
 		var sa1 = small_asteroid_maker.instance()
 		self.get_parent().add_child(sa1)
 		sa1.set_pos(self.get_pos())
