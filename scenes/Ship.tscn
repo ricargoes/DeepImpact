@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://scenes/Ship.gd" type="Script" id=1]
 [ext_resource path="res://resources/images/spaceship.png" type="Texture" id=2]
+[ext_resource path="res://resources/images/booster.png" type="Texture" id=3]
+[ext_resource path="res://scenes/Booster.gd" type="Script" id=4]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 
@@ -17,6 +19,13 @@ speed = Vector2( 1, 1 )
 
 transform/rot = 270.0
 texture = ExtResource( 2 )
+
+[node name="Sprite 2" type="Sprite" parent="."]
+
+transform/pos = Vector2( -53, 0 )
+transform/rot = 270.0
+texture = ExtResource( 3 )
+script/script = ExtResource( 4 )
 
 [node name="Area2D" type="Area2D" parent="."]
 
