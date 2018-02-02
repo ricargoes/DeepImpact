@@ -17,8 +17,8 @@ func _ready():
 	#set_scale(Vector2(0.5,0.5))
 
 func _process(delta):
-	self.set_pos(self.get_pos()+delta*speed)
-	self.set_rot(self.get_rot()+delta*angular_speed)
+	set_position(get_position()+delta*speed)
+	set_rotation(get_rotation()+delta*angular_speed)
 	
 	if (get_overlapping_areas().size() > 0):
 		for area in get_overlapping_areas():

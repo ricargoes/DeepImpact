@@ -24,14 +24,14 @@ func _ready():
 	add_to_group("ships")
 
 func _process(delta):
-	set_pos( get_pos() + speed*delta )
+	set_position( get_position() + speed*delta )
 	
 	if(Input.is_action_pressed(_UI_UP)):
-		speed = speed + new_speed(_ACCELERATION, get_rot())
+		speed = speed + new_speed(_ACCELERATION, get_rotation())
 	if(Input.is_action_pressed(_UI_LEFT)):
-		set_rot( get_rot()+_DELTA_ROT )
+		set_rotation( get_rotation()-_DELTA_ROT )
 	elif(Input.is_action_pressed(_UI_RIGHT)):
-		set_rot( get_rot()-_DELTA_ROT )
+		set_rotation( get_rotation()+_DELTA_ROT )
 	if(Input.is_action_pressed(_UI_DOWN)):
 		speed = _DELTA_SPEED*speed
 	
@@ -49,8 +49,8 @@ func _input(event):
 		var laser_package = load("res://scenes/Laser.tscn")
 		var laser = laser_package.instance()
 		get_parent().add_child(laser)
-		laser.set_pos(get_pos()+speed*TICK)
-		laser.set_rot(get_rot())
+		laser.set_position(get_position()+speed*TICK)
+		laser.set_rotation(get_rotation())
 		laser.update_speed()
 		laser.advance(2*TICK)
 
@@ -58,7 +58,7 @@ func _input(event):
 		get_tree().quit()
 
 func new_speed(modulus,angle):	
-	return Vector2(modulus*cos(angle),-modulus*sin(angle))
+	return Vector2(modulus*cos(angle),modulus*sin(angle))
 	
 func hurt():
 	State.win = false

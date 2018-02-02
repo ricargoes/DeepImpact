@@ -11,10 +11,10 @@ func _ready():
 func _process(delta):
 	var actors = get_tree().get_nodes_in_group("actors")
 	for actor in actors:
-		if(actor.has_method("get_pos")):
-			var pos = actor.get_pos()
-			var width= Globals.get("display/width")
-			var height = Globals.get("display/height")
+		if(actor.has_method("get_position")):
+			var pos = actor.get_position()
+			var width = get_viewport().get_visible_rect().size.x
+			var height = get_viewport().get_visible_rect().size.y
 
 			var new_pos = pos
 			if(pos.x > width):
@@ -27,7 +27,7 @@ func _process(delta):
 				new_pos.y = pos.y + height
 
 			if (new_pos != pos):
-				actor.set_pos(new_pos)
+				actor.set_position(new_pos)
 	if(get_tree().get_nodes_in_group("asteroids").size()==0):
 		victory()
 

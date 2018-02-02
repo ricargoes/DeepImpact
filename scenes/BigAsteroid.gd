@@ -19,8 +19,8 @@ func _ready():
 	#set_scale(Vector2(0.5,0.5))
 
 func _process(delta):
-	self.set_pos(self.get_pos()+delta*speed)
-	self.set_rot(self.get_rot()+delta*angular_speed)
+	set_position(get_position()+delta*speed)
+	set_rotation(get_rotation()+delta*angular_speed)
 	
 	if (get_overlapping_areas().size() > 0):
 		for area in get_overlapping_areas():
@@ -33,7 +33,7 @@ func hurt():
 	State.add_score_point()
 	var small_asteroid_maker = load("res://scenes/SmallAsteroid.tscn")
 	for small_asteroid in range(0,asteroid_division):
-		var sa1 = small_asteroid_maker.instance()
-		self.get_parent().add_child(sa1)
-		sa1.set_pos(self.get_pos())
+		var sa = small_asteroid_maker.instance()
+		get_parent().add_child(sa)
+		sa.set_position(get_position())
 	queue_free()

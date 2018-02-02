@@ -1,50 +1,45 @@
-[gd_scene load_steps=6 format=1]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/Ship.gd" type="Script" id=1]
 [ext_resource path="res://resources/images/spaceship.png" type="Texture" id=2]
 [ext_resource path="res://resources/images/booster.png" type="Texture" id=3]
 [ext_resource path="res://scenes/Booster.gd" type="Script" id=4]
 
-[sub_resource type="ConvexPolygonShape2D" id=1]
-
-custom_solver_bias = 0.0
-points = Vector2Array( 12.7135, 0.481361, -13.8983, 2.54203, -13.8983, -5.92341, 12.5947, -3.52858 )
-
 [node name="Ship" type="Node2D"]
 
-script/script = ExtResource( 1 )
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
 speed = Vector2( 1, 1 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Capsule" type="Sprite" parent="." index="0"]
 
-transform/rot = 270.0
+rotation = 1.5708
 texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
 
-[node name="Sprite 2" type="Sprite" parent="."]
+[node name="Booster" type="Sprite" parent="." index="1"]
 
-transform/pos = Vector2( -53, 0 )
-transform/rot = 270.0
+position = Vector2( -53, 0 )
+rotation = 1.5708
 texture = ExtResource( 3 )
-script/script = ExtResource( 4 )
+script = ExtResource( 4 )
+_sections_unfolded = [ "Transform" ]
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." index="2"]
 
-input/pickable = true
-shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 2.21813, 0, 0, 4.7316, 0.627588, 7.72215 )
-shapes/0/trigger = false
+input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" index="0"]
 
-transform/pos = Vector2( 0.627588, 7.72215 )
-transform/scale = Vector2( 2.21813, 4.7316 )
+position = Vector2( 0.627588, 7.72215 )
+scale = Vector2( 2.21813, 4.7316 )
 build_mode = 0
-polygon = Vector2Array( 12.5947, -3.52858, -13.8983, -5.92341, -13.8983, 2.54203, 12.7135, 0.481361 )
-shape_range = Vector2( 0, 0 )
-trigger = false
+polygon = PoolVector2Array( 12.5947, -3.52858, -13.8983, -5.92341, -13.8983, 2.54203, 12.7135, 0.481361 )
 
 
