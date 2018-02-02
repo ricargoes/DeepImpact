@@ -10,10 +10,9 @@ config_version=3
 
 [application]
 
+config/name="DeepImpact"
 run/main_scene="res://scenes/Game.tscn"
-icon="res://icon.png"
-main_scene="res://scenes/Game.tscn"
-name="DeepImpact"
+config/icon="res://resources/images/potatosmall.png"
 
 [autoload]
 
@@ -49,4 +48,3 @@ motion_fix_enabled=true
 [rendering]
 
 environment/default_clear_color=Color( 0, 0, 0, 1 )
-viewport/default_clear_color=Color( 0, 0, 0, 1 )
