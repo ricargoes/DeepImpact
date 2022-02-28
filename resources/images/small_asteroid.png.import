@@ -1,32 +1,34 @@
 [remap]
 
 importer="texture"
-type="StreamTexture"
-path="res://.import/small_asteroid.png-1394c1724304f4bf85dc3476e4c01da9.stex"
+type="StreamTexture2D"
+uid="uid://b7xkcifr4fj2i"
+path="res://.godot/imported/small_asteroid.png-1394c1724304f4bf85dc3476e4c01da9.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://resources/images/small_asteroid.png"
-source_md5="073782f3649860454261f5c40cbf8577"
-
-dest_files=[ "res://.import/small_asteroid.png-1394c1724304f4bf85dc3476e4c01da9.stex" ]
-dest_md5="16ecbb694e82be723cb46918fb77d748"
+dest_files=["res://.godot/imported/small_asteroid.png-1394c1724304f4bf85dc3476e4c01da9.stex"]
 
 [params]
 
 compress/mode=0
 compress/lossy_quality=0.7
-compress/hdr_mode=0
+compress/hdr_compression=1
+compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=0
-flags/filter=true
-flags/mipmaps=false
-flags/anisotropic=false
-flags/srgb=2
+compress/channel_pack=0
+compress/streamed=false
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false
-process/HDR_as_SRGB=false
-stream=false
-size_limit=0
-detect_3d=true
-svg/scale=1.0
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/size_limit=0
+detect_3d/compress_to=1

@@ -1,17 +1,11 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://i7ihalu4vhff"]
 
-[ext_resource path="res://scenes/Music.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scenes/Menu.tscn" type="PackedScene" id=2]
+[ext_resource type="PackedScene" path="res://scenes/Music.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://d0a68go4oqagq" path="res://scenes/Menu.tscn" id="2"]
 
-[node name="Game" type="Node" index="0"]
+[node name="Game" type="Node"]
 
-[node name="Music" parent="." index="0" instance=ExtResource( 1 )]
-
-pitch_scale = 1.0
+[node name="Music" parent="." instance=ExtResource( "1" )]
 autoplay = true
-mix_target = 0
-bus = "Master"
 
-[node name="Menu" parent="." index="1" instance=ExtResource( 2 )]
-
-
+[node name="Menu" parent="." instance=ExtResource( "2" )]

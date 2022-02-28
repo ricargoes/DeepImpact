@@ -1,6 +1,7 @@
 extends Node2D
 
-export var speed = Vector2(1,1)
+@export
+var speed = Vector2(1,1)
 
 const TICK = 1.0/60
 
@@ -47,7 +48,7 @@ func _process(delta):
 func _input(event):
 	if(event.is_action_pressed(_UI_FIRE)):
 		var laser_package = load("res://scenes/Laser.tscn")
-		var laser = laser_package.instance()
+		var laser = laser_package.instantiate()
 		get_parent().add_child(laser)
 		laser.set_position(get_position()+speed*TICK)
 		laser.set_rotation(get_rotation())

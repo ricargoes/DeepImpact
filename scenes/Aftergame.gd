@@ -86,8 +86,9 @@ func _ready():
 		texto = CITAS[index]
 		result = "FAILURE!"
 		State.level = 1
-	get_node("Result").set_text(result)
-	get_node("Quote").set_text(texto)
+	
+	$CenterContainer/VBoxContainer/Result.set_text(result)
+	$CenterContainer/VBoxContainer/Quote.set_text(texto)
 
 func _input(event):
 	if(event.is_action_pressed("reload")):

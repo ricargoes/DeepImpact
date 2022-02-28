@@ -1,16 +1,14 @@
 [remap]
 
-importer="ogg_vorbis"
+importer="oggvorbisstr"
 type="AudioStreamOGGVorbis"
-path="res://.import/main_theme.ogg-f1092f726e8524ce6cb8028855e01add.oggstr"
+uid="uid://cttvurp2qlhrp"
+path="res://.godot/imported/main_theme.ogg-f1092f726e8524ce6cb8028855e01add.oggvorbisstr"
 
 [deps]
 
 source_file="res://resources/music/main_theme.ogg"
-source_md5="90169bec89f63279968f899b472bb1e2"
-
-dest_files=[ "res://.import/main_theme.ogg-f1092f726e8524ce6cb8028855e01add.oggstr" ]
-dest_md5="345eecf9be85713184eeea9fe51e4b0c"
+dest_files=["res://.godot/imported/main_theme.ogg-f1092f726e8524ce6cb8028855e01add.oggvorbisstr"]
 
 [params]
 

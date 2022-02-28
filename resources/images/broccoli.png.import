@@ -1,32 +1,34 @@
 [remap]
 
 importer="texture"
-type="StreamTexture"
-path="res://.import/broccoli.png-1406d7b612217f435111b9923ceab5ee.stex"
+type="StreamTexture2D"
+uid="uid://chg10fe0vgdfi"
+path="res://.godot/imported/broccoli.png-1406d7b612217f435111b9923ceab5ee.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://resources/images/broccoli.png"
-source_md5="5c86444f3bb063d66fbb8782a2b2969f"
-
-dest_files=[ "res://.import/broccoli.png-1406d7b612217f435111b9923ceab5ee.stex" ]
-dest_md5="563c9ea4361d2292905f993d22ac3bf8"
+dest_files=["res://.godot/imported/broccoli.png-1406d7b612217f435111b9923ceab5ee.stex"]
 
 [params]
 
 compress/mode=0
 compress/lossy_quality=0.7
-compress/hdr_mode=0
+compress/hdr_compression=1
+compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=0
-flags/filter=true
-flags/mipmaps=false
-flags/anisotropic=false
-flags/srgb=2
+compress/channel_pack=0
+compress/streamed=false
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false
-process/HDR_as_SRGB=false
-stream=false
-size_limit=0
-detect_3d=true
-svg/scale=1.0
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/size_limit=0
+detect_3d/compress_to=1

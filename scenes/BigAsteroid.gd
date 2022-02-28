@@ -11,10 +11,10 @@ func _ready():
 	add_to_group("asteroids")
 	asteroid_division = State.level*2
 	randomize()
-	var angle = rand_range(0, 2*PI)
-	var speed_module = rand_range(0, MAX_SPEED)
+	var angle = randf_range(0, 2*PI)
+	var speed_module = randf_range(0, MAX_SPEED)
 	speed = Vector2(speed_module*cos(angle), speed_module*sin(angle))
-	angular_speed = rand_range(-MAX_ANGULAR_SPEED, MAX_ANGULAR_SPEED)
+	angular_speed = randf_range(-MAX_ANGULAR_SPEED, MAX_ANGULAR_SPEED)
 	set_process(true)
 	#set_scale(Vector2(0.5,0.5))
 
@@ -33,7 +33,7 @@ func hurt():
 	State.add_score_point()
 	var small_asteroid_maker = load("res://scenes/SmallAsteroid.tscn")
 	for small_asteroid in range(0,asteroid_division):
-		var sa = small_asteroid_maker.instance()
+		var sa = small_asteroid_maker.instantiate()
 		get_parent().add_child(sa)
 		sa.set_position(get_position())
 	queue_free()

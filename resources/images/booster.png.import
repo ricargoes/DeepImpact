@@ -1,32 +1,34 @@
 [remap]
 
 importer="texture"
-type="StreamTexture"
-path="res://.import/booster.png-a3404c8b6d7303d9a8716d655fa682c1.stex"
+type="StreamTexture2D"
+uid="uid://cwjkfffd1tixs"
+path="res://.godot/imported/booster.png-a3404c8b6d7303d9a8716d655fa682c1.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://resources/images/booster.png"
-source_md5="4ec716fcb452b74323ffb69d58c9b727"
-
-dest_files=[ "res://.import/booster.png-a3404c8b6d7303d9a8716d655fa682c1.stex" ]
-dest_md5="870fc0cb335f5131bcbd1efb5ba838ff"
+dest_files=["res://.godot/imported/booster.png-a3404c8b6d7303d9a8716d655fa682c1.stex"]
 
 [params]
 
 compress/mode=0
 compress/lossy_quality=0.7
-compress/hdr_mode=0
+compress/hdr_compression=1
+compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=0
-flags/filter=true
-flags/mipmaps=false
-flags/anisotropic=false
-flags/srgb=2
+compress/channel_pack=0
+compress/streamed=false
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false
-process/HDR_as_SRGB=false
-stream=false
-size_limit=0
-detect_3d=true
-svg/scale=1.0
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/size_limit=0
+detect_3d/compress_to=1

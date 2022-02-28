@@ -1,32 +1,34 @@
 [remap]
 
 importer="texture"
-type="StreamTexture"
-path="res://.import/potatosmall.png-9b09a886a54eafaf519682b415beec56.stex"
+type="StreamTexture2D"
+uid="uid://lduoamiqxlt7"
+path="res://.godot/imported/potatosmall.png-9b09a886a54eafaf519682b415beec56.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://resources/images/potatosmall.png"
-source_md5="686c9e5e7cdd0727007318a948d80e02"
-
-dest_files=[ "res://.import/potatosmall.png-9b09a886a54eafaf519682b415beec56.stex" ]
-dest_md5="510dccbdb7a220ad0cc8eddd165ac4f7"
+dest_files=["res://.godot/imported/potatosmall.png-9b09a886a54eafaf519682b415beec56.stex"]
 
 [params]
 
 compress/mode=0
 compress/lossy_quality=0.7
-compress/hdr_mode=0
+compress/hdr_compression=1
+compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=0
-flags/filter=true
-flags/mipmaps=false
-flags/anisotropic=false
-flags/srgb=2
+compress/channel_pack=0
+compress/streamed=false
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false
-process/HDR_as_SRGB=false
-stream=false
-size_limit=0
-detect_3d=true
-svg/scale=1.0
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/size_limit=0
+detect_3d/compress_to=1
