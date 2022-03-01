@@ -92,6 +92,6 @@ func _ready():
 
 func _input(event):
 	if(event.is_action_pressed("reload")):
-		State.change_scene("res://scenes/InGame.tscn")
+		get_tree().change_scene("res://scenes/Game.tscn")
 	elif(event.is_action_pressed("exit")):
 		get_tree().quit()

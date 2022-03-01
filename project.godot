@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="DeepImpact"
-run/main_scene="res://scenes/Game.tscn"
+run/main_scene="res://scenes/Menu.tscn"
 config/icon="res://resources/images/potatosmall.png"
 config/features=PackedStringArray("4.0")
 
 [autoload]
 
 State="*res://scenes/State.gd"
+Music="*res://scenes/Music.tscn"
 
 [display]
 

@@ -1,14 +1,6 @@
-[gd_scene load_steps=1 format=2]
+[gd_scene load_steps=2 format=3 uid="uid://06rvmys0wdx1"]
 
-[ext_resource path="res://resources/music/main_theme.ogg" type="AudioStream" id=1]
+[ext_resource type="AudioStream" uid="uid://cttvurp2qlhrp" path="res://resources/music/main_theme.ogg" id="1"]
 
 [node name="Music" type="AudioStreamPlayer"]
-
-stream = ExtResource( 1 )
-playing = false
-loop = true
-volume_db = 0.0
-stream_autoplay = true
-stream_paused = false
-loop_restart_time = 0.0
-buffering_ms = 500
+stream = ExtResource( "1" )

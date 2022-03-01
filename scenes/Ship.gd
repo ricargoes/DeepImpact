@@ -63,4 +63,4 @@ func new_speed(modulus,angle):
 	
 func hurt():
 	State.win = false
-	State.change_scene("res://scenes/Aftergame.tscn")
+	get_tree().change_scene("res://scenes/Aftergame.tscn")

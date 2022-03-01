@@ -33,4 +33,4 @@ func _process(delta):
 
 func victory():
 	State.win = true
-	State.change_scene("res://scenes/Aftergame.tscn")
+	get_tree().change_scene("res://scenes/Aftergame.tscn")

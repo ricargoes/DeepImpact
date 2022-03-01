@@ -1,45 +1,27 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=5 format=3 uid="uid://6n2qmaqualbn"]
 
-[ext_resource path="res://scenes/Ship.gd" type="Script" id=1]
-[ext_resource path="res://resources/images/spaceship.png" type="Texture" id=2]
-[ext_resource path="res://resources/images/booster.png" type="Texture" id=3]
-[ext_resource path="res://scenes/Booster.gd" type="Script" id=4]
+[ext_resource type="Script" path="res://scenes/Ship.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://brmd0yps6227d" path="res://resources/images/spaceship.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://cwjkfffd1tixs" path="res://resources/images/booster.png" id="3"]
+[ext_resource type="Script" path="res://scenes/Booster.gd" id="4"]
 
 [node name="Ship" type="Node2D"]
+script = ExtResource( "1" )
 
-script = ExtResource( 1 )
-_sections_unfolded = [ "Transform" ]
-speed = Vector2( 1, 1 )
-
-[node name="Capsule" type="Sprite" parent="." index="0"]
-
+[node name="Capsule" type="Sprite2D" parent="."]
 rotation = 1.5708
-texture = ExtResource( 2 )
-_sections_unfolded = [ "Transform" ]
+texture = ExtResource( "2" )
 
-[node name="Booster" type="Sprite" parent="." index="1"]
-
-position = Vector2( -53, 0 )
+[node name="Booster" type="Sprite2D" parent="."]
+position = Vector2(-53, 0)
 rotation = 1.5708
-texture = ExtResource( 3 )
-script = ExtResource( 4 )
-_sections_unfolded = [ "Transform" ]
+texture = ExtResource( "3" )
+script = ExtResource( "4" )
 
-[node name="Area2D" type="Area2D" parent="." index="2"]
-
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
+[node name="Area2D" type="Area2D" parent="."]
 gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-audio_bus_override = false
-audio_bus_name = "Master"
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" index="0"]
-
-position = Vector2( 0.627588, 7.72215 )
-scale = Vector2( 2.21813, 4.7316 )
-build_mode = 0
-polygon = PoolVector2Array( 12.5947, -3.52858, -13.8983, -5.92341, -13.8983, 2.54203, 12.7135, 0.481361 )
-
-
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2(0.627588, 7.72215)
+scale = Vector2(2.21813, 4.7316)
+polygon = PackedVector2Array(12.5947, -3.52858, -13.8983, -5.92341, -13.8983, 2.54203, 12.7135, 0.481361)

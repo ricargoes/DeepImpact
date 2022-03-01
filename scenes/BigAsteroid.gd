@@ -30,7 +30,6 @@ func _process(delta):
 	
 
 func hurt():
-	State.add_score_point()
 	var small_asteroid_maker = load("res://scenes/SmallAsteroid.tscn")
 	for small_asteroid in range(0,asteroid_division):
 		var sa = small_asteroid_maker.instantiate()
