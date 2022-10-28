@@ -6,6 +6,9 @@ func _ready():
 
 func _input(event):
 	if(event.is_action_pressed("continue")):
-		get_tree().change_scene("res://scenes/Game.tscn")
+		begin_game()
 	elif(event.is_action_pressed("exit")):
 		get_tree().quit()
+
+func begin_game():
+	get_tree().change_scene("res://scenes/Game.tscn")

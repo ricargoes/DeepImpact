@@ -3,26 +3,36 @@
 [ext_resource type="Script" path="res://scenes/Menu.gd" id="1"]
 
 [node name="Menu" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( "1" )
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-offset_left = 560.0
-offset_top = 244.0
-offset_right = 1360.0
-offset_bottom = 836.0
+custom_minimum_size = Vector2i(900, 0)
+layout_mode = 2
+offset_left = 510.0
+offset_top = 270.0
+offset_right = 1410.0
+offset_bottom = 810.0
 theme_override_constants/separation = 20
 
 [node name="Intro" type="Label" parent="CenterContainer/VBoxContainer"]
-rect_min_size = Vector2(800, 0)
-offset_right = 800.0
-offset_bottom = 546.0
-size_flags_horizontal = 2
+layout_mode = 2
+offset_right = 900.0
+offset_bottom = 494.0
 size_flags_vertical = 0
 text = "“Una gran civilización no es conquistada desde fuera hasta que se destruye ella misma desde adentro.”
 Will Durant
@@ -38,8 +48,9 @@ autowrap_mode = 3
 uppercase = true
 
 [node name="Controls" type="Label" parent="CenterContainer/VBoxContainer"]
-offset_top = 566.0
-offset_right = 800.0
-offset_bottom = 592.0
+layout_mode = 2
+offset_top = 514.0
+offset_right = 900.0
+offset_bottom = 540.0
 text = "Press ENTER to continue"
 horizontal_alignment = 1

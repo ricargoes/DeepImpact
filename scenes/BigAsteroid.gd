@@ -1,10 +1,10 @@
 extends Area2D
 
-const MAX_SPEED = 400
-const MAX_ANGULAR_SPEED = 2*PI
-var asteroid_division
-var speed
-var angular_speed
+const MAX_SPEED: float = 400
+const MAX_ANGULAR_SPEED: float = 2*PI
+var asteroid_division: int
+var speed: Vector2
+var angular_speed: float
 
 func _ready():
 	add_to_group("actors")
@@ -16,11 +16,10 @@ func _ready():
 	speed = Vector2(speed_module*cos(angle), speed_module*sin(angle))
 	angular_speed = randf_range(-MAX_ANGULAR_SPEED, MAX_ANGULAR_SPEED)
 	set_process(true)
-	#set_scale(Vector2(0.5,0.5))
 
 func _process(delta):
-	set_position(get_position()+delta*speed)
-	set_rotation(get_rotation()+delta*angular_speed)
+	position += delta*speed
+	rotation += delta*angular_speed
 	
 	if (get_overlapping_areas().size() > 0):
 		for area in get_overlapping_areas():
@@ -33,6 +32,6 @@ func hurt():
 	var small_asteroid_maker = load("res://scenes/SmallAsteroid.tscn")
 	for small_asteroid in range(0,asteroid_division):
 		var sa = small_asteroid_maker.instantiate()
-		get_parent().add_child(sa)
+		get_parent().add_child(sa, true)
 		sa.set_position(get_position())
 	queue_free()

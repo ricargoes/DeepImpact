@@ -1,29 +1,37 @@
-[gd_scene load_steps=7 format=3 uid="uid://je7434xkodmk"]
+[gd_scene load_steps=3 format=3 uid="uid://je7434xkodmk"]
 
 [ext_resource type="Script" path="res://scenes/Game.gd" id="1_c2lbs"]
 [ext_resource type="PackedScene" path="res://scenes/Background.tscn" id="2_qacs7"]
-[ext_resource type="PackedScene" uid="uid://6n2qmaqualbn" path="res://scenes/Ship.tscn" id="3_08omi"]
-[ext_resource type="PackedScene" path="res://scenes/BigAsteroid.tscn" id="4_kevmq"]
-[ext_resource type="PackedScene" path="res://scenes/SmallAsteroid.tscn" id="5_87u3v"]
 
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_jb0nc"]
+[node name="Game" type="Node2D"]
+script = ExtResource("1_c2lbs")
 
-[node name="InGame" type="Node2D"]
-script = ExtResource( "1_c2lbs" )
-
-[node name="Background" parent="." instance=ExtResource( "2_qacs7" )]
+[node name="Background" parent="." instance=ExtResource("2_qacs7")]
 position = Vector2(931, 515)
 
-[node name="Ship" parent="." instance=ExtResource( "3_08omi" )]
-position = Vector2(960, 540)
-speed = Vector2(200, 0)
+[node name="Ships" type="Node2D" parent="."]
 
-[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-replication = [ExtResource( "4_kevmq" ), ExtResource( "5_87u3v" )]
+[node name="ShipSpawner" type="MultiplayerSpawner" parent="Ships"]
+_spawnable_scenes = PackedStringArray("res://scenes/Ship.tscn", "res://scenes/Laser.tscn")
 spawn_path = NodePath("..")
-auto_spawn = true
 
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-root_path = NodePath("../Ship")
-replication_interval = 0.16
-resource = SubResource( "SceneReplicationConfig_jb0nc" )
+[node name="Asteroids" type="Node2D" parent="."]
+
+[node name="AsteroidsSpawner" type="MultiplayerSpawner" parent="Asteroids"]
+_spawnable_scenes = PackedStringArray("res://scenes/BigAsteroid.tscn", "res://scenes/SmallAsteroid.tscn")
+spawn_path = NodePath("..")
+
+[node name="SpawningPoints" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="0" type="Marker2D" parent="SpawningPoints"]
+position = Vector2(1253, 396)
+
+[node name="1" type="Marker2D" parent="SpawningPoints"]
+position = Vector2(671, 383)
+
+[node name="2" type="Marker2D" parent="SpawningPoints"]
+position = Vector2(1261, 690)
+
+[node name="3" type="Marker2D" parent="SpawningPoints"]
+position = Vector2(665, 690)

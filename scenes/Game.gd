@@ -1,36 +1,60 @@
 extends Node
 
-func _ready():
-	set_process(true)
-	var n_asteroids = 2*State.level
-	var asteroid_scene = load("res://scenes/BigAsteroid.tscn")
-	for i in range(0,n_asteroids):
-		var asteroid = asteroid_scene.instantiate()
-		add_child(asteroid)
+var ship_scene: PackedScene = load("res://scenes/Ship.tscn")
 
-func _process(delta):
+func _ready():
+	State.player_added.connect(spawn_ship)
+	State.game_started.connect(start)
+	get_tree().paused = true
+
+
+@rpc(any_peer, call_local)
+func start():
+	spawn_asteroids()
+	get_tree().paused = false
+
+
+func spawn_ship(id):
+	if(!multiplayer.is_server()):
+		return
+
+	var spawning_point: Marker2D = $SpawningPoints.get_children().front()
+	var ship = ship_scene.instantiate()
+	ship.synced_position = spawning_point.position
+	ship.position = spawning_point.position
+	ship.name = str(id)
+	ship.set_player_name(State.players[id])
+	$Ships.add_child(ship, true)
+	spawning_point.queue_free()
+
+
+func spawn_asteroids():
+	if(!multiplayer.is_server()):
+		return
+#	var n_asteroids = 2*State.level
+	var asteroid_scene = load("res://scenes/BigAsteroid.tscn")
+	for i in range(0,1):
+		var asteroid = asteroid_scene.instantiate()
+		$Asteroids.add_child(asteroid, true)
+
+
+func _process(_delta):
 	var actors = get_tree().get_nodes_in_group("actors")
 	for actor in actors:
-		if(actor.has_method("get_position")):
-			var pos = actor.get_position()
-			var width = get_viewport().get_visible_rect().size.x
-			var height = get_viewport().get_visible_rect().size.y
+		var width = get_viewport().get_visible_rect().size.x
+		var height = get_viewport().get_visible_rect().size.y
+		actor.position = Vector2(fposmod(actor.position.x, width), fposmod(actor.position.y, height))
+	
+	check_victory()
 
-			var new_pos = pos
-			if(pos.x > width):
-				new_pos.x = pos.x - width
-			elif(pos.x < 0):
-				new_pos.x = pos.x + width
-			if(pos.y > height):
-				new_pos.y = pos.y - height
-			elif(pos.y < 0):
-				new_pos.y = pos.y + height
 
-			if (new_pos != pos):
-				actor.set_position(new_pos)
+func check_victory():
+	if(!multiplayer.is_server()):
+		return
 	if(get_tree().get_nodes_in_group("asteroids").size()==0):
 		victory()
 
+
 func victory():
 	State.win = true
-	get_tree().change_scene("res://scenes/Aftergame.tscn")
+	get_tree().change_scene_to_file("res://scenes/Aftergame.tscn")
