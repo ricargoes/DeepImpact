@@ -3,8 +3,9 @@
 [ext_resource type="Script" path="res://scenes/BigAsteroid.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://32smufk2xddl" path="res://resources/images/potatobig.png" id="2"]
 
-[sub_resource type="CircleShape2D" id="1"]
-radius = 0.595528
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eloa1"]
+radius = 30.5488
+height = 112.0
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_5pgjx"]
 properties/0/path = NodePath(".:position")
@@ -23,9 +24,9 @@ position = Vector2(-6.20971, 0.185876)
 texture = ExtResource("2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.175636, 2.87783)
-scale = Vector2(25.7308, 25.7217)
-shape = SubResource("1")
+position = Vector2(-10, 1)
+rotation = 1.42784
+shape = SubResource("CapsuleShape2D_eloa1")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_5pgjx")

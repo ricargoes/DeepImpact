@@ -12,9 +12,12 @@ properties/0/sync = true
 properties/1/path = NodePath(".:rotation")
 properties/1/spawn = true
 properties/1/sync = true
-properties/2/path = NodePath("Booster:visible")
+properties/2/path = NodePath(".:boosting")
 properties/2/spawn = true
 properties/2/sync = true
+properties/3/path = NodePath(".:speed")
+properties/3/spawn = true
+properties/3/sync = true
 
 [node name="Ship" type="Node2D"]
 script = ExtResource("1")
@@ -44,5 +47,4 @@ offset_right = 40.0
 offset_bottom = 23.0
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_interval = 0.1
 replication_config = SubResource("SceneReplicationConfig_mdoq0")

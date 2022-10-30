@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://je7434xkodmk"]
 
 [ext_resource type="Script" path="res://scenes/Game.gd" id="1_c2lbs"]
-[ext_resource type="PackedScene" path="res://scenes/Background.tscn" id="2_qacs7"]
+[ext_resource type="PackedScene" uid="uid://bsgfx3dyee10d" path="res://scenes/Background.tscn" id="2_qacs7"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_c2lbs")
@@ -11,15 +11,15 @@ position = Vector2(931, 515)
 
 [node name="Ships" type="Node2D" parent="."]
 
-[node name="ShipSpawner" type="MultiplayerSpawner" parent="Ships"]
-_spawnable_scenes = PackedStringArray("res://scenes/Ship.tscn", "res://scenes/Laser.tscn")
-spawn_path = NodePath("..")
-
 [node name="Asteroids" type="Node2D" parent="."]
 
-[node name="AsteroidsSpawner" type="MultiplayerSpawner" parent="Asteroids"]
+[node name="ShipSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://scenes/Ship.tscn", "res://scenes/Laser.tscn")
+spawn_path = NodePath("../Ships")
+
+[node name="AsteroidsSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("res://scenes/BigAsteroid.tscn", "res://scenes/SmallAsteroid.tscn")
-spawn_path = NodePath("..")
+spawn_path = NodePath("../Asteroids")
 
 [node name="SpawningPoints" type="Node2D" parent="."]
 metadata/_edit_lock_ = true

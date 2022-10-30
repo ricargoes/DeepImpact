@@ -2,7 +2,6 @@ extends Node
 
 var level = 1
 const MAX_LEVEL = 5
-var win = false
 
 # Default game server port. Can be any number between 1024 and 49151.
 # Not on the list of registered or common poaaarts as of November 2020:
@@ -83,7 +82,7 @@ func unregister_player(id):
 
 
 @rpc(call_local)
-func load_world():
+func hide_lobby():
 	Lobby.hide()
 
 
@@ -106,7 +105,7 @@ func join_game(ip, new_player_name):
 
 func begin_game():
 	assert(multiplayer.is_server())
-	rpc("load_world")
+	rpc("hide_lobby")
 	game_started.emit()
 
 

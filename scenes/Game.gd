@@ -3,39 +3,57 @@ extends Node
 var ship_scene: PackedScene = load("res://scenes/Ship.tscn")
 
 func _ready():
-	State.player_added.connect(spawn_ship)
 	State.game_started.connect(start)
+	Aftergame.game_reloaded.connect(start)
 	get_tree().paused = true
 
 
-@rpc(any_peer, call_local)
 func start():
+	clear()
 	spawn_asteroids()
+	spawn_ships()
+	rpc("unpause_game")
+
+
+@rpc(call_local)
+func unpause_game() -> void:
 	get_tree().paused = false
 
 
-func spawn_ship(id):
-	if(!multiplayer.is_server()):
-		return
+func spawn_ships() -> void:
+	var spawning_points = $SpawningPoints.get_children()
+	var player_ids = State.players.keys()
+	player_ids.sort()
+	for i in player_ids.size():
+		spawn_ship(player_ids[i], spawning_points[i].position)
 
-	var spawning_point: Marker2D = $SpawningPoints.get_children().front()
+
+func spawn_ship(id, spawn_position):
 	var ship = ship_scene.instantiate()
-	ship.synced_position = spawning_point.position
-	ship.position = spawning_point.position
-	ship.name = str(id)
-	ship.set_player_name(State.players[id])
+	ship.connect("ship_destroyed", defeat)
 	$Ships.add_child(ship, true)
-	spawning_point.queue_free()
+	ship.rpc("initialize", id, spawn_position)
 
 
 func spawn_asteroids():
 	if(!multiplayer.is_server()):
 		return
-#	var n_asteroids = 2*State.level
+	var n_asteroids = 2*State.level
 	var asteroid_scene = load("res://scenes/BigAsteroid.tscn")
-	for i in range(0,1):
+	for i in range(0, n_asteroids):
 		var asteroid = asteroid_scene.instantiate()
+		asteroid.position = Vector2(300,0)
 		$Asteroids.add_child(asteroid, true)
+
+
+func clear() -> void:
+	clear_children($Ships)
+	clear_children($Asteroids)
+
+
+func clear_children(node: Node) -> void:
+	for child in node.get_children():
+		child.queue_free()
 
 
 func _process(_delta):
@@ -45,7 +63,8 @@ func _process(_delta):
 		var height = get_viewport().get_visible_rect().size.y
 		actor.position = Vector2(fposmod(actor.position.x, width), fposmod(actor.position.y, height))
 	
-	check_victory()
+	if multiplayer.is_server():
+		check_victory()
 
 
 func check_victory():
@@ -55,6 +74,11 @@ func check_victory():
 		victory()
 
 
-func victory():
-	State.win = true
-	get_tree().change_scene_to_file("res://scenes/Aftergame.tscn")
+func victory() -> void:
+	Aftergame.rpc("launch", true, State.level)
+	State.level += 1
+
+
+func defeat() -> void:
+	Aftergame.rpc("launch", false, State.level)
+	State.level = 1

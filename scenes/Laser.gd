@@ -9,6 +9,7 @@ var speed = Vector2(0,0)
 func _ready():
 	set_process(true)
 	add_to_group("actors")
+	update_speed()
 
 
 func _process(delta):

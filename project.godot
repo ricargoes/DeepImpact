@@ -20,6 +20,7 @@ config/icon="res://resources/images/potatosmall.png"
 Music="*res://scenes/Music.tscn"
 Lobby="*res://scenes/Lobby.tscn"
 State="*res://scenes/State.tscn"
+Aftergame="*res://scenes/Aftergame.tscn"
 
 [display]
 
