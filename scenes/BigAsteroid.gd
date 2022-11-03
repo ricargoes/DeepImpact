@@ -1,6 +1,6 @@
 extends Area2D
 
-const MAX_SPEED: float = 40
+const MAX_SPEED: float = 400
 const MAX_ANGULAR_SPEED: float = 2*PI
 var asteroid_division: int
 var speed: Vector2
