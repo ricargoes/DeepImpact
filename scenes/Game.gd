@@ -57,11 +57,13 @@ func clear_children(node: Node) -> void:
 
 
 func _process(_delta):
+	
 	var actors = get_tree().get_nodes_in_group("actors")
 	for actor in actors:
-		var width = get_viewport().get_visible_rect().size.x
-		var height = get_viewport().get_visible_rect().size.y
-		actor.position = Vector2(fposmod(actor.position.x, width), fposmod(actor.position.y, height))
+		if actor.is_multiplayer_authority():
+			var width = get_viewport().get_visible_rect().size.x
+			var height = get_viewport().get_visible_rect().size.y
+			actor.position = Vector2(fposmod(actor.position.x, width), fposmod(actor.position.y, height))
 	
 	if multiplayer.is_server():
 		check_victory()
