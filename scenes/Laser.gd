@@ -15,10 +15,11 @@ func _ready():
 func _process(delta):
 	position += speed*delta
 	
-	for thing in $Area2D.get_overlapping_areas():
-		if(thing.is_in_group("asteroids") and thing.has_method("hurt")):
-			thing.hurt()
-			queue_free()
+	if multiplayer.is_server():
+		for thing in $Area2D.get_overlapping_areas():
+			if(thing.is_in_group("asteroids") and thing.has_method("hurt")):
+				thing.hurt()
+				queue_free()
 
 
 func update_speed():
