@@ -1,6 +1,6 @@
-extends Node
+extends Control
 
-var CITAS = ["La guerra es la continuación de la política por otros medios. General Carl von Clausewitz",
+var QUOTES = ["La guerra es la continuación de la política por otros medios. General Carl von Clausewitz",
 "La patata no se puede poseer, la patata es un fruto de la nave naturaleza. Homer Simpson",
 "Tenemos que fabricar máquinas que nos permitan seguir fabricando máquinas, porque lo que va a hacer nunca una máquina es fabricar máquinas. Mariano Rajoy",
 "La historia será amable conmigo, porque tengo intención de escribirla. Winston Churchill",
@@ -65,33 +65,51 @@ var CITAS = ["La guerra es la continuación de la política por otros medios. Ge
 
 var RECETA = "Ingredientes:\n Medio kilo de brócoli verde\n 1 patata\n 3 dientes de ajo\n 1 cucharadita de pimentón dulce\n 1 cucharadita de vinagre de vino blanco\n Aceite de oliva virgen extra\n Sal\n\nElaboracion:\n Limpiamos el brócoli y lo separamos en arbolitos. Pelamos la patata, la lavamos y la troceamos gruesa. Cocemos la patata con el brócoli al vapor o en muy poca agua con sal con la cazuela tapada. 7 minutos. La verdura debe quedar tierna pero entera. La escurrimos muy bien sobre un colador ara que suelte toda el agua. Mientras tanto pelamos los ajos y los fileteamos. Los doramos al fuego en aceite de oliva. Cuando empiecen a tomar color añadimos el pimentón, removemos un momento para que ligue bien con el aceite y retiramos del fuego. Ya fuera del fuego añadimos el vinagre y la sal. Regamos la verdura caliente con este adobo y servimos al momento."
 
+signal game_reloaded
+
+
 func _ready():
-	set_process_input(true)
+	dismiss()
+
+
+@rpc(call_local)
+func launch(is_victory: bool, level: int) -> void:
+	if multiplayer.is_server():
+		set_process_input(true)
+		%Controls.show()
+	get_tree().paused = true
+	show()
 	var texto
 	var result
-	if(State.win):
-		if(State.level == State.MAX_LEVEL):
+	if(is_victory):
+		if(level == State.MAX_LEVEL):
 			result = "SUCCESS!\nMission Accomplished!"
 			texto = RECETA
-			State.level = 1
+			State.level = 0
 		else:
-			result = "Level "+str(State.level)+" cleared!\nReady to next level!"
+			result = "Level " + str(level) + " cleared!\nReady to next level!"
 			randomize()
-			var index = (randi() % CITAS.size())
-			texto = CITAS[index]
-			State.level += 1
+			var index = (randi() % QUOTES.size())
+			texto = QUOTES[index]
 	else:
 		randomize()
-		var index = (randi() % CITAS.size())
-		texto = CITAS[index]
+		var index = (randi() % QUOTES.size())
+		texto = QUOTES[index]
 		result = "FAILURE!"
-		State.level = 1
 	
 	$CenterContainer/VBoxContainer/Result.set_text(result)
 	$CenterContainer/VBoxContainer/Quote.set_text(texto)
 
+
+@rpc(call_local)
+func dismiss() -> void:
+	set_process_input(false)
+	hide()
+
+
 func _input(event):
 	if(event.is_action_pressed("reload")):
-		get_tree().change_scene("res://scenes/Game.tscn")
+		rpc("dismiss")
+		emit_signal("game_reloaded")
 	elif(event.is_action_pressed("exit")):
 		get_tree().quit()

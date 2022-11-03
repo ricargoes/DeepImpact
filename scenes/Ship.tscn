@@ -1,22 +1,35 @@
-[gd_scene load_steps=5 format=3 uid="uid://6n2qmaqualbn"]
+[gd_scene load_steps=6 format=3 uid="uid://dg0ga2vxy1y8j"]
 
 [ext_resource type="Script" path="res://scenes/Ship.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://brmd0yps6227d" path="res://resources/images/spaceship.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://cwjkfffd1tixs" path="res://resources/images/booster.png" id="3"]
-[ext_resource type="Script" path="res://scenes/Booster.gd" id="4"]
+[ext_resource type="Script" path="res://scenes/Input.gd" id="5_xrbsd"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_mdoq0"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/sync = true
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/sync = true
+properties/2/path = NodePath(".:boosting")
+properties/2/spawn = true
+properties/2/sync = true
+properties/3/path = NodePath(".:speed")
+properties/3/spawn = true
+properties/3/sync = true
 
 [node name="Ship" type="Node2D"]
-script = ExtResource( "1" )
+script = ExtResource("1")
 
 [node name="Capsule" type="Sprite2D" parent="."]
 rotation = 1.5708
-texture = ExtResource( "2" )
+texture = ExtResource("2")
 
 [node name="Booster" type="Sprite2D" parent="."]
 position = Vector2(-53, 0)
 rotation = 1.5708
-texture = ExtResource( "3" )
-script = ExtResource( "4" )
+texture = ExtResource("3")
 
 [node name="Area2D" type="Area2D" parent="."]
 gravity = 98.0
@@ -25,3 +38,13 @@ gravity = 98.0
 position = Vector2(0.627588, 7.72215)
 scale = Vector2(2.21813, 4.7316)
 polygon = PackedVector2Array(12.5947, -3.52858, -13.8983, -5.92341, -13.8983, 2.54203, 12.7135, 0.481361)
+
+[node name="Input" type="Node" parent="."]
+script = ExtResource("5_xrbsd")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_mdoq0")
