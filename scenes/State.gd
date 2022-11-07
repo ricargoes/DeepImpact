@@ -40,13 +40,7 @@ func set_connections(is_server: bool):
 
 # Callback from SceneTree.
 func _player_disconnected(id):
-	if has_node("/root/World"): # Game is in progress.
-		if multiplayer.is_server():
-			game_error.emit("Player " + players[id] + " disconnected")
-			end_game()
-	else: # Game is not in progress.
-		# Unregister this player.
-		unregister_player(id)
+	unregister_player(id)
 
 
 # Callback from SceneTree, only for clients (not server).
@@ -105,15 +99,10 @@ func join_game(ip, new_player_name):
 
 func begin_game():
 	assert(multiplayer.is_server())
-	rpc("hide_lobby")
 	game_started.emit()
 
 
 func end_game():
-	if has_node("/root/World"): # Game is in progress.
-		# End it
-		get_node("/root/World").queue_free()
-
 	game_ended.emit()
 	players.clear()
 

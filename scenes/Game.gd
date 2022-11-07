@@ -12,6 +12,7 @@ func start():
 	clear()
 	spawn_asteroids()
 	spawn_ships()
+	State.rpc("hide_lobby")
 	rpc("unpause_game")
 
 

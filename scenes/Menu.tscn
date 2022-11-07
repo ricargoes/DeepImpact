@@ -20,7 +20,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-custom_minimum_size = Vector2i(900, 0)
+custom_minimum_size = Vector2(900, 0)
 offset_left = 510.0
 offset_top = 270.0
 offset_right = 1410.0
